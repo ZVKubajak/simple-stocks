@@ -2,23 +2,18 @@
   "name": "simple-stocks",
   "version": "1.0.0",
   "description": "An investments application using Polygon API.",
-  "main": "index.js",
   "scripts": {
     "start": "npm run client:build && npm run server",
     "start:dev": "concurrently \"npm run server:dev\" \"wait-on tcp:3001 && npm run client:dev\"",
-
+    
     "server": "cd server && npm start",
     "server:dev": "cd server && npm run dev",
 
     "client:build": "cd client && npm run build",
     "client:dev": "cd client && npm run dev",
 
-    "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed"
+    "install:all": "cd server && npm install && cd ../client && npm install"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "concurrently": "^9.0.1",
     "wait-on": "^8.0.1"
