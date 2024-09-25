@@ -1,10 +1,10 @@
 import axios from "axios";
-import { config } from "../config/config";
-import { StockData, StockResult } from "../types/stockData";
+import { config } from "../../config/config";
+import { StockData, StockResult } from "../../types/stockData";
 
 const POLYGON_API_KEY = `${config.baseUrl}/v2`;
 
-export const getStockData = async (ticker: string): Promise<StockData> => {
+export const getCurrentStockData = async (ticker: string): Promise<StockData> => {
   try {
     const response = await axios.get(
       `${POLYGON_API_KEY}/aggs/ticker/${ticker}/prev`,

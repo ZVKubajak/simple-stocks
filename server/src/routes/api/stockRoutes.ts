@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { fetchStockData } from "../../controllers/stockController";
+import { fetchCurrentStockData } from "../../controllers/stockController";
 
 const router = Router();
 
-router.get("/stocks/:ticker", fetchStockData);
+router.get("/stocks/:ticker", fetchCurrentStockData);
 
 export default router;
