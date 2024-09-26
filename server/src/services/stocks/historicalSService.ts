@@ -1,13 +1,19 @@
 import axios from "axios";
-import { config } from "../config/config";
-import { StockData, StockResult } from "../types/stockData";
+import { config } from "../../config/config";
+import { StockData, StockResult } from "../../types/stockData";
 
 const POLYGON_API_KEY = `${config.baseUrl}/v2`;
 
-export const getStockData = async (ticker: string): Promise<StockData> => {
+export const getHistoricalStockData = async (
+  ticker: string,
+  multiplier: number,
+  timespan: string,
+  from: string,
+  to: string
+): Promise<StockData> => {
   try {
     const response = await axios.get(
-      `${POLYGON_API_KEY}/aggs/ticker/${ticker}/prev`,
+      `${POLYGON_API_KEY}/aggs/ticker/${ticker}/range/${multiplier}/${timespan}/${from}/${to}`,
       {
         params: {
           apiKey: config.polygonApiKey,
@@ -15,7 +21,6 @@ export const getStockData = async (ticker: string): Promise<StockData> => {
       }
     );
 
-    // This maps the API response to the custom interfaces.
     const apiData = response.data;
 
     const stockResults: StockResult[] = apiData.results.map((result: any) => ({
@@ -41,7 +46,7 @@ export const getStockData = async (ticker: string): Promise<StockData> => {
       count: apiData.count,
     };
   } catch (error) {
-    console.error(`Error fetching data for ${ticker}:`, error);
+    console.error(`Error fetching data for the parameters:`, error);
     throw error;
   }
 };
