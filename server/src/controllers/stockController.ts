@@ -22,15 +22,22 @@ export const fetchHistoricalStockData = async (
   res: Response
 ): Promise<void> => {
   const { ticker } = req.params;
-  const { multiplier, from, to } = req.query;
+  const { multiplier, timespan, from, to } = req.query;
+
+  if (!multiplier || !timespan || !from || !to) {
+    res.status(400).json({ error: "Missing required parameters." });
+    return;
+  }
 
   try {
     const historicalStockData: StockData = await getHistoricalStockData(
       ticker,
       Number(multiplier),
+      timespan as string,
       from as string,
       to as string
     );
+
     res.json(historicalStockData);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch historical stock data." });

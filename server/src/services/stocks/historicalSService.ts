@@ -5,7 +5,11 @@ import { StockData, StockResult } from "../../types/stockData";
 const POLYGON_API_KEY = `${config.baseUrl}/v2`;
 
 export const getHistoricalStockData = async (
-  ticker: string
+  ticker: string,
+  multiplier: number,
+  timespan: string,
+  from: string,
+  to: string
 ): Promise<StockData> => {
   try {
     const response = await axios.get(
