@@ -4,7 +4,7 @@ import { fetchHistoricalStockData } from "../../controllers/stockController";
 
 const router = Router();
 
-router.get("/stocks/:ticker", fetchCurrentStockData);
+router.get("/stocks/current/:ticker", fetchCurrentStockData);
 router.get("/stocks/historical/:ticker", fetchHistoricalStockData);
 
 export default router;
