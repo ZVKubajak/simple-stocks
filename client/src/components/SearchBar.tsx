@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, FormControl, Button } from "react-bootstrap";
+import { Form, Button, Col, Row } from "react-bootstrap";
 
 import "../assets/css/css-components/SearchBar.css";
 
@@ -18,18 +18,23 @@ function SearchBar({ onSearch }: SearchBarProps) {
   };
 
   return (
-    <Form onSubmit={handleSearch}>
-      <FormControl
-        type="search"
-        placeholder="Search"
-        className="mr-sm-2"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <Button variant="dark" type="submit">
-        Search
-      </Button>
-    </Form>
+    <Row className="justify-content-center mt-4">
+      <Col xs="auto">
+        <Form onSubmit={handleSearch} className="d-flex">
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <div id="submit-button">
+            <Button variant="dark" type="submit">
+              Submit
+            </Button>
+          </div>
+        </Form>
+      </Col>
+    </Row>
   );
 }
 
