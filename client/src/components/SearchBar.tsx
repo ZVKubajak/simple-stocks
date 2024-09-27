@@ -18,8 +18,8 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
   };
 
   return (
-    <Row className="justify-content-center mt-4">
-      <Col xs="auto">
+    <Row className="justify-content-center mt-5">
+      <Col xs="3">
         <Form onSubmit={handleSearch} className="d-flex">
           <Form.Control
             type="search"

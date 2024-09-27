@@ -12,10 +12,10 @@ const Stocks = () => {
     <main>
       <Navigation />
       <div id="search-bar">
-      <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} />
       </div>
     </main>
   );
-}
+};
 
 export default Stocks;
