@@ -7,7 +7,7 @@ interface SearchBarProps {
   onSearch: (query: string) => void;
 }
 
-function SearchBar({ onSearch }: SearchBarProps) {
+const SearchBar = ({ onSearch }: SearchBarProps) => {
   const [query, setQuery] = useState<string>("");
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
