@@ -1,4 +1,4 @@
-import "../assets/css/Stocks.css";
+import "../assets/css/css-pages/Stocks.css";
 
 function Stocks() {
   return (
