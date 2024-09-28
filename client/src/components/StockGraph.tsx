@@ -47,7 +47,7 @@ const options = {
 const StockBarChart = () => {
   return (
     <div id="chart-container">
-      <Bar data={data} options={options} />;
+      <Bar data={data} options={options} />
     </div>
   );
 };
