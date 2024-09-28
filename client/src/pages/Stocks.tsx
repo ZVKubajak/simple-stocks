@@ -1,6 +1,6 @@
-import Navigation from "../components/Navigation";
-import SearchBar from "../components/SearchBar";
-import StockBarChart from "../components/StockGraph";
+import Navigation from "../layout/Navigation";
+import SearchBar from "../layout/SearchBar";
+import StockBarChart from "../components/BarChart";
 
 import "../assets/css/css-pages/Stocks.css";
 
