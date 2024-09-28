@@ -1,0 +1,7 @@
+#chart-container {
+  width: 600px;
+  height: 400px;
+  margin: 50px auto;
+  border: 2px solid white;
+  border-radius: 15px;
+}
