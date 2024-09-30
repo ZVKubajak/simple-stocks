@@ -2,6 +2,22 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  PointElement,
+  LineController,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  LineElement,
+  PointElement,
+  LineController
+);
 
 interface LineChartData {
   labels: string[];
