@@ -1,4 +1,4 @@
-import "../assets/css/css-components/StockGraph.css";
+import "../assets/css/css-components/Charts.css";
 
 import { Bar } from "react-chartjs-2";
 
@@ -44,7 +44,7 @@ const options = {
   },
 };
 
-const StockBarChart = () => {
+const BarChart = () => {
   return (
     <div id="chart-container">
       <Bar data={data} options={options} />
@@ -52,4 +52,4 @@ const StockBarChart = () => {
   );
 };
 
-export default StockBarChart;
+export default BarChart;

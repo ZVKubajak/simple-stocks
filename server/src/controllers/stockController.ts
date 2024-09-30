@@ -24,6 +24,8 @@ export const fetchHistoricalStockData = async (
   const { ticker } = req.params;
   const { multiplier, timespan, from, to } = req.query;
 
+  console.log(`Request for historical data for ${ticker} with params:`, { multiplier, timespan, from, to });
+
   if (!multiplier || !timespan || !from || !to) {
     res.status(400).json({ error: "Missing required parameters." });
     return;
@@ -38,6 +40,7 @@ export const fetchHistoricalStockData = async (
       to as string
     );
 
+    console.log("Historical stock data:", historicalStockData);
     res.json(historicalStockData);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch historical stock data." });

@@ -1,6 +1,8 @@
-import Navigation from "../components/Navigation";
-import SearchBar from "../components/SearchBar";
-import StockBarChart from "../components/StockGraph";
+import Navigation from "../layout/Navigation";
+import SearchBar from "../layout/SearchBar";
+
+import LineChart from "../components/LineChart";
+import BarChart from "../components/BarChart";
 
 import "../assets/css/css-pages/Stocks.css";
 
@@ -13,7 +15,7 @@ const Stocks = () => {
     <main>
       <Navigation />
       <SearchBar onSearch={handleSearch} />
-      <StockBarChart />
+      <LineChart />
     </main>
   );
 };
