@@ -2,7 +2,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
+
+interface LineChartData {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: number[];
+    borderColor: string;
+    tension: number;
+    fill: boolean;
+  }[];
+}
 
 const fetchHistoricalData = async (
   ticker: string,
@@ -12,9 +22,14 @@ const fetchHistoricalData = async (
   to: string
 ) => {
   try {
-    const response = await axios.get(`/api/stocks/historical/${ticker}`, {
-      params: { multiplier, timespan, from, to },
-    });
+    console.log(`Fetching historical data for ${ticker} from ${from} to ${to}`);
+    const response = await axios.get(
+      `http://localhost:3001/api/stocks/historical/${ticker}`,
+      {
+        params: { multiplier, timespan, from, to },
+      }
+    );
+    console.log("Response data:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching historical stock data", error);
@@ -22,7 +37,18 @@ const fetchHistoricalData = async (
 };
 
 const LineChart = () => {
-  const [chartData, setChartData] = useState({});
+  const [chartData, setChartData] = useState<LineChartData>({
+    labels: [],
+    datasets: [
+      {
+        label: "",
+        data: [],
+        borderColor: "rgba(75, 192, 192, 1)",
+        tension: 0.1,
+        fill: false,
+      },
+    ],
+  });
   const [loading, setLoading] = useState(true);
 
   const ticker = "AAPL";
@@ -41,6 +67,8 @@ const LineChart = () => {
         to
       );
 
+      console.log("Fetched data:", data);
+
       if (data && data.stockResults) {
         const formattedData = {
           labels: data.stockResults.map((result: any) =>
@@ -57,8 +85,12 @@ const LineChart = () => {
           ],
         };
 
+        console.log("Formatted chart data:", formattedData);
+
         setChartData(formattedData);
         setLoading(false);
+      } else {
+        console.log("No stock results found in the data.");
       }
     };
 
