@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import "../assets/css/css-components/Charts.css";
+
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -114,7 +116,7 @@ const LineChart = () => {
   }, [ticker, multiplier, timespan, from, to]);
 
   return (
-    <div>
+    <div id="chart-container">
       <h2>{ticker} Stock Price History</h2>
       {loading ? <p>Loading...</p> : <Line data={chartData} />}
     </div>

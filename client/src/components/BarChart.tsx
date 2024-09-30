@@ -1,4 +1,4 @@
-import "../assets/css/css-components/StockGraph.css";
+import "../assets/css/css-components/Charts.css";
 
 import { Bar } from "react-chartjs-2";
 
