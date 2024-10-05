@@ -28,9 +28,7 @@ interface LineChartData {
   datasets: {
     label: string;
     data: number[];
-    fill: boolean;
     borderColor: string;
-    backgroundColor: string;
     tension: number;
   }[];
 }
@@ -64,10 +62,8 @@ const LineChart = () => {
       {
         label: "",
         data: [],
-        fill: true,
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        tension: 0.1,
+        borderColor: "",
+        tension: 0,
       },
     ],
   });
@@ -100,9 +96,7 @@ const LineChart = () => {
             {
               label: `${ticker} Stock Price`,
               data: data.stockResults.map((result: any) => result.closedPrice),
-              fill: true,
-              borderColor: "rgba(75, 192, 192, 1)",
-              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              borderColor: "rgba(0, 255, 150, 1)",
               tension: 0.1,
             },
           ],
