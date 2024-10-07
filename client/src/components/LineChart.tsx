@@ -3,6 +3,8 @@ import axios from "axios";
 
 import "../assets/css/css-components/Charts.css";
 
+import { chartOptions } from "../utils/chartOptions";
+
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -28,7 +30,6 @@ interface LineChartData {
     data: number[];
     borderColor: string;
     tension: number;
-    fill: boolean;
   }[];
 }
 
@@ -61,9 +62,8 @@ const LineChart = ({ ticker }: { ticker: string }) => {
       {
         label: "",
         data: [],
-        borderColor: "rgba(75, 192, 192, 1)",
-        tension: 0.1,
-        fill: false,
+        borderColor: "",
+        tension: 0,
       },
     ],
   });
@@ -95,8 +95,7 @@ const LineChart = ({ ticker }: { ticker: string }) => {
             {
               label: `${ticker} Stock Price`,
               data: data.stockResults.map((result: any) => result.closedPrice),
-              fill: false,
-              borderColor: `rgba(75, 192, 192, 1)`,
+              borderColor: "rgba(0, 255, 150, 1)",
               tension: 0.1,
             },
           ],
@@ -117,7 +116,11 @@ const LineChart = ({ ticker }: { ticker: string }) => {
   return (
     <div id="chart-container">
       <h2>{ticker} Stock Price History</h2>
-      {loading ? <p>Loading...</p> : <Line data={chartData} />}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <Line data={chartData} options={chartOptions} />
+      )}
     </div>
   );
 };
