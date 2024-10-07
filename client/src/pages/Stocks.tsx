@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import Navigation from "../layout/Navigation";
 import SearchBar from "../layout/SearchBar";
-
 import LineChart from "../components/LineChart";
+import TimeOptions from "../layout/TimeOptions";
 
 import "../assets/css/css-pages/Stocks.css";
 
@@ -23,6 +23,7 @@ const Stocks = () => {
       ) : (
         <p id="submit-ticker-message">Enter a ticker symbol to see its stock price history.</p>
       )}
+      <TimeOptions />
     </main>
   );
 };

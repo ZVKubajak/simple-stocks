@@ -2,7 +2,7 @@ import { useState } from "react";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 
-const TimePeriodOptions = () => {
+const TimeOptions = () => {
   const [periodValue, setPeriodValue] = useState("1");
 
   const timePeriods = [
@@ -33,4 +33,4 @@ const TimePeriodOptions = () => {
   );
 };
 
-export default TimePeriodOptions;
+export default TimeOptions;
