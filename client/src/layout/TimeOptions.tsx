@@ -8,7 +8,7 @@ interface TimeOptionsProps {
 }
 
 const TimeOptions = ({ onPeriodChange }: TimeOptionsProps) => {
-  const [periodValue, setPeriodValue] = useState("1");
+  const [periodValue, setPeriodValue] = useState("4");
 
   const timePeriods = [
     { name: "1M", value: "1" },

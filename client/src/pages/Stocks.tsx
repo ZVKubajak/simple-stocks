@@ -9,9 +9,14 @@ import "../assets/css/css-pages/Stocks.css";
 
 const Stocks = () => {
   const [ticker, setTicker] = useState("");
+  const [timePeriod, setTimePeriod] = useState("4");
 
   const handleSearch = (ticker: string) => {
     setTicker(ticker.toUpperCase());
+  };
+
+  const handlePeriod = (period: string) => {
+    setTimePeriod(period);
   };
 
   return (
@@ -19,11 +24,15 @@ const Stocks = () => {
       <Navigation />
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
-        <LineChart ticker={ticker} />
+        <>
+          <LineChart ticker={ticker} />
+          <TimeOptions onPeriodChange={handlePeriod} />
+        </>
       ) : (
-        <p id="submit-ticker-message">Enter a ticker symbol to see its stock price history.</p>
+        <p id="submit-ticker-message">
+          Enter a ticker symbol to see its stock price history.
+        </p>
       )}
-      <TimeOptions />
     </main>
   );
 };
