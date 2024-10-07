@@ -54,7 +54,7 @@ const fetchHistoricalData = async (
   }
 };
 
-const LineChart = () => {
+const LineChart = ({ ticker }: { ticker: string }) => {
   const [chartData, setChartData] = useState<LineChartData>({
     labels: [],
     datasets: [
