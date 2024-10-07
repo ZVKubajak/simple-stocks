@@ -69,7 +69,6 @@ const LineChart = () => {
   });
   const [loading, setLoading] = useState(true);
 
-  const ticker = "AAPL";
   const multiplier = 1;
   const timespan = "day";
   const from = "2023-01-01";
@@ -113,7 +112,7 @@ const LineChart = () => {
     };
 
     loadData();
-  }, [ticker, multiplier, timespan, from, to]);
+  }, [ticker]);
 
   return (
     <div id="chart-container">
