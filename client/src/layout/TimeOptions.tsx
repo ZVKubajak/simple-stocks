@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Col, Row } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 
@@ -14,22 +15,26 @@ const TimeOptions = () => {
   ];
 
   return (
-    <ButtonGroup>
-      {timePeriods.map((timePeriod, idx) => (
-        <ToggleButton
-          key={idx}
-          id={`timePeriod-${idx}`}
-          type="radio"
-          variant={"outline-success"}
-          name="timePeriod"
-          value={timePeriod.value}
-          checked={periodValue === timePeriod.value}
-          onChange={(e) => setPeriodValue(e.currentTarget.value)}
-        >
-          {timePeriod.name}
-        </ToggleButton>
-      ))}
-    </ButtonGroup>
+    <Row className="justify-content-center mt-6">
+      <Col xs="7">
+        <ButtonGroup>
+          {timePeriods.map((timePeriod, idx) => (
+            <ToggleButton
+              key={idx}
+              id={`timePeriod-${idx}`}
+              type="radio"
+              variant={"outline-success"}
+              name="timePeriod"
+              value={timePeriod.value}
+              checked={periodValue === timePeriod.value}
+              onChange={(e) => setPeriodValue(e.currentTarget.value)}
+            >
+              {timePeriod.name}
+            </ToggleButton>
+          ))}
+        </ButtonGroup>
+      </Col>
+    </Row>
   );
 };
 
