@@ -3,7 +3,11 @@ import { Col, Row } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 
-const TimeOptions = () => {
+interface TimeOptionsProps {
+  onPeriodChange: (period: string) => void;
+}
+
+const TimeOptions = ({ onPeriodChange }: TimeOptionsProps) => {
   const [periodValue, setPeriodValue] = useState("1");
 
   const timePeriods = [
@@ -13,6 +17,11 @@ const TimeOptions = () => {
     { name: "1Y", value: "4" },
     { name: "2Y", value: "5" },
   ];
+
+  const handleChange = (value: string) => {
+    setPeriodValue(value);
+    onPeriodChange(value);
+  };
 
   return (
     <Row className="justify-content-center mt-6">
@@ -27,7 +36,7 @@ const TimeOptions = () => {
               name="timePeriod"
               value={timePeriod.value}
               checked={periodValue === timePeriod.value}
-              onChange={(e) => setPeriodValue(e.currentTarget.value)}
+              onChange={() => handleChange(timePeriod.value)}
             >
               {timePeriod.name}
             </ToggleButton>
