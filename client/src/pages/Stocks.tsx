@@ -8,7 +8,7 @@ import LineChart from "../components/LineChart";
 import "../assets/css/css-pages/Stocks.css";
 
 const Stocks = () => {
-  const [ticker, setTicker] = useState("AAPL");
+  const [ticker, setTicker] = useState("");
 
   const handleSearch = (ticker: string) => {
     setTicker(ticker.toUpperCase());
@@ -18,7 +18,11 @@ const Stocks = () => {
     <main>
       <Navigation />
       <SearchBar onSearch={handleSearch} />
-      <LineChart ticker={ticker} />
+      {ticker ? (
+        <LineChart ticker={ticker} />
+      ) : (
+        <p id="submit-ticker-message">Enter a ticker symbol to see its stock price history.</p>
+      )}
     </main>
   );
 };
