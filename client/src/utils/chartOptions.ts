@@ -3,20 +3,16 @@ export const chartOptions = {
     x: {
       ticks: {
         color: "#fff",
-        font: {
-          size: 14,
-        },
+        font: { size: 14 },
+        minRotation: 0,
+        maxRotation: 0,
       },
-      grid: {
-        display: false,
-      },
+      grid: { display: false },
     },
     y: {
       ticks: {
         color: "#fff",
-        font: {
-          size: 14,
-        },
+        font: { size: 14 },
       },
       grid: {
         color: "rgba(255, 255, 255, 0.2)",
@@ -24,16 +20,10 @@ export const chartOptions = {
     },
   },
   plugins: {
-    legend: {
-      display: true,
-    },
-    tooltip: {
-      enabled: true,
-    },
+    legend: { display: true },
+    tooltip: { enabled: true },
   },
   elements: {
-    point: {
-      radius: 0,
-    },
+    point: { radius: 0 },
   },
 };
