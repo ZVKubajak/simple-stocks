@@ -79,43 +79,45 @@ const LineChart = ({ ticker, from, to }: LineChartProps) => {
   const timespan = "day";
 
   useEffect(() => {
-    const loadData = async () => {
-      const data = await fetchHistoricalData(
-        ticker,
-        multiplier,
-        timespan,
-        from,
-        to
-      );
+    if (from && to) {
+      const loadData = async () => {
+        const data = await fetchHistoricalData(
+          ticker,
+          multiplier,
+          timespan,
+          from,
+          to
+        );
 
-      console.log("Fetched data:", data);
+        console.log("Fetched data:", data);
 
-      if (data && data.stockResults) {
-        const formattedData = {
-          labels: data.stockResults.map((result: any) =>
-            new Date(result.timeStamp).toLocaleDateString()
-          ),
-          datasets: [
-            {
-              label: `${ticker} Stock Price`,
-              data: data.stockResults.map((result: any) => result.closedPrice),
-              borderColor: "rgba(0, 255, 150, 1)",
-              tension: 0.1,
-            },
-          ],
-        };
+        if (data && data.stockResults) {
+          const formattedData = {
+            labels: data.stockResults.map((result: any) =>
+              new Date(result.timeStamp).toLocaleDateString()
+            ),
+            datasets: [
+              {
+                label: `${ticker} Stock Price`,
+                data: data.stockResults.map((result: any) => result.closedPrice),
+                borderColor: "rgba(0, 255, 150, 1)",
+                tension: 0.1,
+              },
+            ],
+          };
 
-        console.log("Formatted chart data:", formattedData);
+          console.log("Formatted chart data:", formattedData);
 
-        setChartData(formattedData);
-        setLoading(false);
-      } else {
-        console.log("No stock results found in the data.");
-      }
-    };
+          setChartData(formattedData);
+          setLoading(false);
+        } else {
+          console.log("No stock results found in the data.");
+        }
+      };
 
-    loadData();
-  }, [ticker]);
+      loadData();
+    }
+  }, [ticker, from, to]);
 
   return (
     <div id="chart-container">

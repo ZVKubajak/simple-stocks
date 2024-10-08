@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
@@ -8,8 +8,8 @@ interface TimeOptionsProps {
 }
 
 const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
-  console.log("TimeOptions rendered.");
-  const [periodValue, setPeriodValue] = useState("4");
+  console.log("TimeOptions.tsx rendered.");
+  const [periodValue, setPeriodValue] = useState("4"); // Default to 1 year
 
   const timePeriods = [
     { name: "1M", value: "1" },
@@ -25,7 +25,6 @@ const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
     const to = new Date();
     let from: Date;
 
-    // Using if-else statements to determine the 'from' date based on selected period
     if (value === "1") {
       from = new Date(to);
       from.setMonth(to.getMonth() - 1);
@@ -51,6 +50,12 @@ const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
 
     onDatesChange(formatDate(from), formatDate(to));
   };
+
+  useEffect(() => {
+    handleChange(periodValue);
+  }, []);
+
+  // console.log("End of TimeOptions.tsx.");
 
   return (
     <Row className="justify-content-center mt-6">
