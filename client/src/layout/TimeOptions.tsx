@@ -53,6 +53,8 @@ const TimeOptions = ({ onPeriodChange, onDatesChange }: TimeOptionsProps) => {
 
     const formatDate = (date: Date) => date.toISOString().split("T")[0];
 
+    console.log("From Date:", formatDate(from), "To Date:", formatDate(to));
+
     onDatesChange(formatDate(from), formatDate(to));
   };
 

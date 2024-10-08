@@ -11,7 +11,7 @@ const Stocks = () => {
   const [ticker, setTicker] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [timePeriod, setTimePeriod] = useState("4");
+  const [_timePeriod, setTimePeriod] = useState("4");
 
   const handleSearch = (ticker: string) => {
     setTicker(ticker.toUpperCase());
@@ -22,6 +22,7 @@ const Stocks = () => {
   };
 
   const handleDates = (from: string, to: string) => {
+    console.log("Received Dates:", from, to);
     setFrom(from);
     setTo(to);
   };
@@ -32,11 +33,17 @@ const Stocks = () => {
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
         <>
-          <LineChart ticker={ticker} from={from} to={to} />
-          <TimeOptions onPeriodChange={handlePeriod} onDatesChange={handleDates} />
+          {from && to ? (
+            <>
+              <LineChart ticker={ticker} from={from} to={to} />
+              <TimeOptions onPeriodChange={handlePeriod} onDatesChange={handleDates} />
+            </>
+          ) : (
+            <p>Loading chart data...</p>
+          )}
         </>
       ) : (
-        <p id="submit-ticker-message">
+        <p className="chart-message">
           Enter a ticker symbol to see its stock price history.
         </p>
       )}
