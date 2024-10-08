@@ -23,31 +23,26 @@ const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
     setPeriodValue(value);
 
     const to = new Date();
-    let from;
+    let from: Date;
 
-    switch (value) {
-      case "1":
-        from = new Date(to);
-        from.setMonth(to.getMonth() - 1);
-        break;
-      case "2":
-        from = new Date(to);
-        from.setMonth(to.getMonth() - 6);
-        break;
-      case "3":
-        from = new Date(to);
-        from.setMonth(0);
-        break;
-      case "4":
-        from = new Date(to);
-        from.setFullYear(to.getFullYear() - 1);
-        break;
-      case "5":
-        from = new Date(to);
-        from.setFullYear(to.getFullYear() - 2);
-        break;
-      default:
-        from = to;
+    // Using if-else statements to determine the 'from' date based on selected period
+    if (value === "1") {
+      from = new Date(to);
+      from.setMonth(to.getMonth() - 1);
+    } else if (value === "2") {
+      from = new Date(to);
+      from.setMonth(to.getMonth() - 6);
+    } else if (value === "3") {
+      from = new Date(to);
+      from.setMonth(0); // Start from the beginning of the year
+    } else if (value === "4") {
+      from = new Date(to);
+      from.setFullYear(to.getFullYear() - 1);
+    } else if (value === "5") {
+      from = new Date(to);
+      from.setFullYear(to.getFullYear() - 2);
+    } else {
+      from = to;
     }
 
     const formatDate = (date: Date) => date.toISOString().split("T")[0];

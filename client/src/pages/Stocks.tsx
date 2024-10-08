@@ -17,7 +17,7 @@ const Stocks = () => {
   };
 
   const handleDates = (from: string, to: string) => {
-    console.log("Received Dates:", from, to);
+    console.log("Received Dates:", from, "-", to);
     setFrom(from);
     setTo(to);
   };
