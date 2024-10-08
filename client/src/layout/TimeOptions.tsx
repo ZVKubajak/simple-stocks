@@ -8,7 +8,7 @@ interface TimeOptionsProps {
 }
 
 const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
-  console.log("TimeOptions.tsx rendered.");
+  // console.log("TimeOptions.tsx rendered.");
   const [periodValue, setPeriodValue] = useState("4"); // Default to 1 year
 
   const timePeriods = [
@@ -46,7 +46,7 @@ const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
 
     const formatDate = (date: Date) => date.toISOString().split("T")[0];
 
-    console.log("From Date:", formatDate(from), "To Date:", formatDate(to));
+    // console.log("From Date:", formatDate(from), "To Date:", formatDate(to));
 
     onDatesChange(formatDate(from), formatDate(to));
   };
