@@ -5,9 +5,10 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 
 interface TimeOptionsProps {
   onPeriodChange: (period: string) => void;
+  onDatesChange: (from: string, to: string) => void;
 }
 
-const TimeOptions = ({ onPeriodChange }: TimeOptionsProps) => {
+const TimeOptions = ({ onPeriodChange, onDatesChange }: TimeOptionsProps) => {
   const [periodValue, setPeriodValue] = useState("4");
 
   const timePeriods = [
@@ -21,6 +22,38 @@ const TimeOptions = ({ onPeriodChange }: TimeOptionsProps) => {
   const handleChange = (value: string) => {
     setPeriodValue(value);
     onPeriodChange(value);
+
+    const to = new Date();
+    let from;
+
+    switch (value) {
+      case "1":
+        from = new Date(to);
+        from.setMonth(to.getMonth() - 1);
+        break;
+      case "2":
+        from = new Date(to);
+        from.setMonth(to.getMonth() - 6);
+        break;
+      case "3":
+        from = new Date(to);
+        from.setMonth(0);
+        break;
+      case "4":
+        from = new Date(to);
+        from.setFullYear(to.getFullYear() - 1);
+        break;
+      case "5":
+        from = new Date(to);
+        from.setFullYear(to.getFullYear() - 2);
+        break;
+      default:
+        from = to;
+    }
+
+    const formatDate = (date: Date) => date.toISOString().split("T")[0];
+
+    onDatesChange(formatDate(from), formatDate(to));
   };
 
   return (
