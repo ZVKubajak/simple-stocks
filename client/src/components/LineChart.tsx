@@ -33,6 +33,12 @@ interface LineChartData {
   }[];
 }
 
+interface LineChartProps {
+  ticker: string;
+  from: string;
+  to: string;
+}
+
 const fetchHistoricalData = async (
   ticker: string,
   multiplier: number,
@@ -55,7 +61,7 @@ const fetchHistoricalData = async (
   }
 };
 
-const LineChart = ({ ticker }: { ticker: string }) => {
+const LineChart = ({ ticker, from, to }: LineChartProps) => {
   const [chartData, setChartData] = useState<LineChartData>({
     labels: [],
     datasets: [
@@ -71,8 +77,6 @@ const LineChart = ({ ticker }: { ticker: string }) => {
 
   const multiplier = 1;
   const timespan = "day";
-  const from = "2023-01-01";
-  const to = "2023-12-31";
 
   useEffect(() => {
     const loadData = async () => {
