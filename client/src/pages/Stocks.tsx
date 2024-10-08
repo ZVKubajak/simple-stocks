@@ -9,6 +9,8 @@ import "../assets/css/css-pages/Stocks.css";
 
 const Stocks = () => {
   const [ticker, setTicker] = useState("");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
   const [timePeriod, setTimePeriod] = useState("4");
 
   const handleSearch = (ticker: string) => {
@@ -19,14 +21,19 @@ const Stocks = () => {
     setTimePeriod(period);
   };
 
+  const handleDates = (from: string, to: string) => {
+    setFrom(from);
+    setTo(to);
+  };
+
   return (
     <main>
       <Navigation />
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
         <>
-          <LineChart ticker={ticker} />
-          <TimeOptions onPeriodChange={handlePeriod} />
+          <LineChart ticker={ticker} from={from} to={to} />
+          <TimeOptions onPeriodChange={handlePeriod} onDatesChange={handleDates} />
         </>
       ) : (
         <p id="submit-ticker-message">
