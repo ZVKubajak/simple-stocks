@@ -11,14 +11,9 @@ const Stocks = () => {
   const [ticker, setTicker] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [_timePeriod, setTimePeriod] = useState("4");
 
   const handleSearch = (ticker: string) => {
     setTicker(ticker.toUpperCase());
-  };
-
-  const handlePeriod = (period: string) => {
-    setTimePeriod(period);
   };
 
   const handleDates = (from: string, to: string) => {
@@ -33,14 +28,8 @@ const Stocks = () => {
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
         <>
-          {from && to ? (
-            <>
-              <LineChart ticker={ticker} from={from} to={to} />
-              <TimeOptions onPeriodChange={handlePeriod} onDatesChange={handleDates} />
-            </>
-          ) : (
-            <p>Loading chart data...</p>
-          )}
+          <LineChart ticker={ticker} from={from} to={to} />
+          <TimeOptions onDatesChange={handleDates} />
         </>
       ) : (
         <p className="chart-message">

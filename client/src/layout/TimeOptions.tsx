@@ -4,11 +4,11 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 
 interface TimeOptionsProps {
-  onPeriodChange: (period: string) => void;
   onDatesChange: (from: string, to: string) => void;
 }
 
-const TimeOptions = ({ onPeriodChange, onDatesChange }: TimeOptionsProps) => {
+const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
+  console.log("TimeOptions rendered.");
   const [periodValue, setPeriodValue] = useState("4");
 
   const timePeriods = [
@@ -21,7 +21,6 @@ const TimeOptions = ({ onPeriodChange, onDatesChange }: TimeOptionsProps) => {
 
   const handleChange = (value: string) => {
     setPeriodValue(value);
-    onPeriodChange(value);
 
     const to = new Date();
     let from;
