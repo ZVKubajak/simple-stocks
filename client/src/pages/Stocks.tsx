@@ -16,11 +16,12 @@ const Stocks = () => {
 
   const handleSearch = (ticker: string) => {
     setTicker(ticker.toUpperCase());
+    console.log(ticker);
   };
 
   const handlePointClick = (dataPoint: DataPoint) => {
     console.log("Point clicked:", dataPoint);
-  }
+  };
 
   const handleDates = (from: string, to: string) => {
     console.log("Received Dates:", from, "-", to);
@@ -36,7 +37,12 @@ const Stocks = () => {
         <Container fluid className="mt-4">
           <Row>
             <Col md={8}>
-              <LineChart ticker={ticker} from={from} to={to} onPointClick={handlePointClick} />
+              <LineChart
+                ticker={ticker}
+                from={from}
+                to={to}
+                onPointClick={handlePointClick}
+              />
             </Col>
 
             <Col md={4}>

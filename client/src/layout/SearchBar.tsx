@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSearch(input.trim());
-    console.log(input.trim());
+    // console.log(input.trim());
   };
 
   return (

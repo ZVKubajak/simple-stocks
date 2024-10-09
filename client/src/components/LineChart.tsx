@@ -151,7 +151,7 @@ const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
           };
 
           onPointClick(dataPoint);
-          console.log(dataPoint);
+          // console.log(dataPoint);
         } else {
           console.error("Clicked data is undefined:", clickedData);
         }
