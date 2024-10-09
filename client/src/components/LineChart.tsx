@@ -165,7 +165,6 @@ const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
 
   return (
     <div className="chart-container" onClick={handlePointClick}>
-      <h2>{ticker} Stock Price History</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (

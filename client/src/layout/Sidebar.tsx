@@ -19,13 +19,12 @@ const Sidebar = ({ onDatesChange, selectedDataPoint }: SidebarProps) => {
   };
 
   return (
-    <Row>
-      <Col>
+    <Row id="sidebar-container">
+      <Col className="mt-3">
         <TimeOptions onDatesChange={onDatesChange} />
-        <Form>
+        <Form className="d-flex justify-content-center mt-3" id="stat-switch">
           <Form.Check
             type="switch"
-            id="custom-switch"
             label="Advanced Statistics"
             onChange={toggleStats}
             checked={showStats}
@@ -37,11 +36,11 @@ const Sidebar = ({ onDatesChange, selectedDataPoint }: SidebarProps) => {
               Time: {new Date(selectedDataPoint.timeStamp).toLocaleString()}
             </p>
             <p>Volume: {selectedDataPoint.volume}</p>
-            <p>Average Price: {selectedDataPoint.avgPrice}</p>
-            <p>Open Price: {selectedDataPoint.openPrice}</p>
-            <p>Closed Price: {selectedDataPoint.closedPrice}</p>
-            <p>Highest Price: {selectedDataPoint.highPrice}</p>
-            <p>Lowest Price: {selectedDataPoint.lowPrice}</p>
+            <p>Average Price: ${selectedDataPoint.avgPrice}</p>
+            <p>Open Price: ${selectedDataPoint.openPrice}</p>
+            <p>Closed Price: ${selectedDataPoint.closedPrice}</p>
+            <p>Highest Price: ${selectedDataPoint.highPrice}</p>
+            <p>Lowest Price: ${selectedDataPoint.lowPrice}</p>
             <p>Trade Count: {selectedDataPoint.tradeCount}</p>
           </section>
         )}

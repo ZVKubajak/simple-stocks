@@ -1,0 +1,9 @@
+#sidebar-container {
+  margin: auto;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+
+#stat-switch {
+  justify-content: center;
+}

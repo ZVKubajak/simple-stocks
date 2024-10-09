@@ -39,6 +39,7 @@ const Stocks = () => {
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
         <Container fluid className="mt-4">
+          <h1 id="ticker-title">{ticker} Stock History</h1>
           <Row>
             <Col md={8}>
               <LineChart
