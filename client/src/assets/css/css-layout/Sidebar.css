@@ -1,0 +1,21 @@
+#sidebar-container {
+  margin: auto;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+
+#stat-switch {
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+#stat-switch .form-check-input {
+  width: 4rem;  /* Bigger width */
+  height: 2rem; /* Bigger height */
+  border-radius: 3rem; /* Bigger radius for a more oval shape */
+}
+
+#stat-switch .form-check-label {
+  font-size: 1.5rem; /* Larger font size for the label */
+  margin-left: 15px; /* Increase space between the switch and the label */
+}

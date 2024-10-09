@@ -1,3 +1,12 @@
+main {
+  overflow-x: hidden;
+}
+
+#ticker-title {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
 .chart-message {
   padding-top: 200px;
   text-align: center;

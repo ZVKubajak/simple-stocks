@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Form, Button, Col, Row } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
 
-import "../assets/css/css-components/SearchBar.css";
+import "../assets/css/css-layout/SearchBar.css";
 
 interface SearchBarProps {
   onSearch: (ticker: string) => void;
@@ -17,11 +17,11 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSearch(input.trim());
-    console.log(input.trim());
+    // console.log(input.trim());
   };
 
   return (
-    <Row className="justify-content-center mt-5">
+    <Row className="justify-content-center mt-4">
       <Col xs="3">
         <Form onSubmit={handleSubmit} className="d-flex">
           <Form.Control

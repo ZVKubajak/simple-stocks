@@ -1,18 +1,25 @@
 import { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 import Navigation from "../layout/Navigation";
 import SearchBar from "../layout/SearchBar";
 import LineChart from "../components/LineChart";
-import TimeOptions from "../layout/TimeOptions";
+import Sidebar from "../layout/Sidebar";
 
+import { DataPoint } from "../components/LineChart";
 import "../assets/css/css-pages/Stocks.css";
 
 const Stocks = () => {
+  const [selectedDataPoint, setSelectedDataPoint] = useState<DataPoint | null>(
+    null
+  );
+  const [showStats, setShowStats] = useState(false);
   const [ticker, setTicker] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
 
   const handleSearch = (ticker: string) => {
+    console.log("Ticker:", ticker);
     setTicker(ticker.toUpperCase());
   };
 
@@ -22,15 +29,43 @@ const Stocks = () => {
     setTo(to);
   };
 
+  const handlePointClick = (dataPoint: DataPoint) => {
+    console.log("Point clicked:", dataPoint);
+    setSelectedDataPoint(dataPoint);
+  };
+
+  const toggleStats = () => {
+    setShowStats((prev) => !prev);
+  };
+
   return (
     <main>
       <Navigation />
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
-        <>
-          <LineChart ticker={ticker} from={from} to={to} />
-          <TimeOptions onDatesChange={handleDates} />
-        </>
+        <Container fluid className="mt-4">
+          <h1 id="ticker-title">{ticker} Stock History</h1>
+          <Row>
+            <Col md={8}>
+              <LineChart
+                ticker={ticker}
+                from={from}
+                to={to}
+                showPoints={showStats}
+                onPointClick={handlePointClick}
+              />
+            </Col>
+
+            <Col md={4}>
+              <Sidebar
+                onDatesChange={handleDates}
+                toggleStats={toggleStats}
+                showStats={showStats}
+                selectedDataPoint={selectedDataPoint}
+              />
+            </Col>
+          </Row>
+        </Container>
       ) : (
         <p className="chart-message">
           Enter a ticker symbol to see its stock price history.

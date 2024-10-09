@@ -1,4 +1,5 @@
-export const chartOptions = {
+export const chartOptions = (showPoints: boolean) => ({
+  responsive: true,
   scales: {
     x: {
       ticks: {
@@ -24,6 +25,10 @@ export const chartOptions = {
     tooltip: { enabled: true },
   },
   elements: {
-    point: { radius: 0 },
+    point: {
+      radius: showPoints ? 5 : 0,
+      hoverRadius: 15,
+      hoverBorderWidth: 2,
+    },
   },
-};
+});

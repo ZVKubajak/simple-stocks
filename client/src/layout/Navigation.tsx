@@ -2,11 +2,11 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-import "../assets/css/css-components/Navigation.css";
+import "../assets/css/css-layout/Navigation.css";
 
 const Navigation = () => {
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar bg="dark" data-bs-theme="dark" id="navbar">
       <Container>
         <Navbar.Brand href="#home">Simple Stocks</Navbar.Brand>
         <Nav className="me-auto">
