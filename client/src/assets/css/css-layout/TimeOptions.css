@@ -1,0 +1,5 @@
+.toggle-button {
+  font-size: 1.5rem; /* Increase the font size */
+  padding: 10px 20px; /* Increase padding for height and width */
+  border-radius: 0.5rem; /* Optional: Change the border radius for rounded corners */
+}

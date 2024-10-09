@@ -3,6 +3,8 @@ import { Row, Col } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 
+import "../assets/css/css-layout/TimeOptions.css";
+
 interface TimeOptionsProps {
   onDatesChange: (from: string, to: string) => void;
 }
@@ -59,7 +61,7 @@ const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
 
   return (
     <Row className="justify-content-center">
-      <Col xs="7">
+      <Col xs="10">
         <ButtonGroup>
           {timePeriods.map((timePeriod, idx) => (
             <ToggleButton
@@ -68,6 +70,7 @@ const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
               type="radio"
               variant={"outline-success"}
               name="timePeriod"
+              className="toggle-button"
               value={timePeriod.value}
               checked={periodValue === timePeriod.value}
               onChange={() => handleChange(timePeriod.value)}
