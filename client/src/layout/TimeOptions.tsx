@@ -58,7 +58,7 @@ const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
   // console.log("End of TimeOptions.tsx.");
 
   return (
-    <Row className="justify-content-center mt-6">
+    <Row className="justify-content-center">
       <Col xs="7">
         <ButtonGroup>
           {timePeriods.map((timePeriod, idx) => (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 import Navigation from "../layout/Navigation";
 import SearchBar from "../layout/SearchBar";
@@ -27,10 +28,19 @@ const Stocks = () => {
       <Navigation />
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
-        <>
-          <LineChart ticker={ticker} from={from} to={to} />
-          <TimeOptions onDatesChange={handleDates} />
-        </>
+        <Container fluid>
+          <Row>
+            <Col md={8}>
+              <LineChart ticker={ticker} from={from} to={to} />
+            </Col>
+
+            <Col md={4}>
+              <div>
+                <TimeOptions onDatesChange={handleDates} />
+              </div>
+            </Col>
+          </Row>
+        </Container>
       ) : (
         <p className="chart-message">
           Enter a ticker symbol to see its stock price history.
