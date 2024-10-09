@@ -33,11 +33,22 @@ interface LineChartData {
   }[];
 }
 
+export interface DataPoint {
+  volume: number;
+  avgPrice: number;
+  openPrice: number;
+  closedPrice: number;
+  highPrice: number;
+  lowPrice: number;
+  timeStamp: string;
+  tradeCount: number;
+}
+
 interface LineChartProps {
   ticker: string;
   from: string;
   to: string;
-  onPointClick: (dataPoint: any) => void;
+  onPointClick: (dataPoint: DataPoint) => void;
 }
 
 const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
