@@ -24,6 +24,10 @@ export const chartOptions = {
     tooltip: { enabled: true },
   },
   elements: {
-    point: { radius: 0 },
+    point: {
+      radius: 5,
+      hoverRadius: 15,
+      hoverBorderWidth: 2,
+    },
   },
 };
