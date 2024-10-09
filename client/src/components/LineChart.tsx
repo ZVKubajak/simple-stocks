@@ -37,9 +37,11 @@ interface LineChartProps {
   ticker: string;
   from: string;
   to: string;
+  onPointClick: (dataPoint: any) => void;
 }
 
-const LineChart = ({ ticker, from, to }: LineChartProps) => {
+const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
+  const [stockResults, setStockResults] = useState<any[]>([]);
   const [chartData, setChartData] = useState<LineChartData>({
     labels: [],
     datasets: [
@@ -70,6 +72,8 @@ const LineChart = ({ ticker, from, to }: LineChartProps) => {
         // console.log("Fetched data:", data);
 
         if (data && data.stockResults) {
+          setStockResults(data.stockResults);
+
           const formattedData = {
             labels: data.stockResults.map((result: any) =>
               new Date(result.timeStamp).toLocaleDateString()
@@ -97,8 +101,35 @@ const LineChart = ({ ticker, from, to }: LineChartProps) => {
     }
   }, [ticker, from, to]);
 
+  const handlePointClick = (event: React.MouseEvent) => {
+    const chart = event.currentTarget as HTMLCanvasElement;
+    const chartInstance = (chart as any).chart.chartInstance;
+
+    const points = chartInstance.getElementsAtEventForMode(event.nativeEvent, "nearest", { intersect: true }, true);
+
+    if (points.length) {
+      const firstPoint = points[0];
+      const i = firstPoint.index;
+
+      const clickedData = stockResults[i]
+
+      const dataPoint = {
+        volume: clickedData.volume,
+        avgPrice: clickedData.avgPrice,
+        openPrice: clickedData.openPrice,
+        closedPrice: clickedData.closedPrice,
+        highPrice: clickedData.highPrice,
+        lowPrice: clickedData.lowPrice,
+        timeStamp: clickedData.timeStamp,
+        tradeCount: clickedData.tradeCount,
+      };
+
+      onPointClick(dataPoint);
+    }
+  }
+
   return (
-    <div className="chart-container">
+    <div className="chart-container" onClick={handlePointClick}>
       <h2>{ticker} Stock Price History</h2>
       {loading ? (
         <p>Loading...</p>
