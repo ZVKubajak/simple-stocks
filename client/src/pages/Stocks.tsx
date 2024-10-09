@@ -52,7 +52,7 @@ const Stocks = () => {
             <Col md={4}>
               <Sidebar
                 onDatesChange={handleDates}
-                onPointClick={handlePointClick}
+                selectedDataPoint={selectedDataPoint}
               />
             </Col>
           </Row>
