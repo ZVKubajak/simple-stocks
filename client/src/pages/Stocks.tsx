@@ -4,13 +4,15 @@ import { Container, Row, Col } from "react-bootstrap";
 import Navigation from "../layout/Navigation";
 import SearchBar from "../layout/SearchBar";
 import LineChart from "../components/LineChart";
-import TimeOptions from "../layout/TimeOptions";
+import Sidebar from "../layout/Sidebar";
 
 import { DataPoint } from "../components/LineChart";
 import "../assets/css/css-pages/Stocks.css";
 
 const Stocks = () => {
-  const [selectedDataPoint, setSelectedDataPoint] = useState<DataPoint | null>(null);
+  const [selectedDataPoint, setSelectedDataPoint] = useState<DataPoint | null>(
+    null
+  );
   const [ticker, setTicker] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -20,15 +22,15 @@ const Stocks = () => {
     setTicker(ticker.toUpperCase());
   };
 
-  const handlePointClick = (dataPoint: DataPoint) => {
-    console.log("Point clicked:", dataPoint);
-    setSelectedDataPoint(dataPoint);
-  };
-
   const handleDates = (from: string, to: string) => {
     console.log("Received Dates:", from, "-", to);
     setFrom(from);
     setTo(to);
+  };
+
+  const handlePointClick = (dataPoint: DataPoint) => {
+    console.log("Point clicked:", dataPoint);
+    setSelectedDataPoint(dataPoint);
   };
 
   return (
@@ -48,9 +50,10 @@ const Stocks = () => {
             </Col>
 
             <Col md={4}>
-              <div>
-                <TimeOptions onDatesChange={handleDates} />
-              </div>
+              <Sidebar
+                onDatesChange={handleDates}
+                onPointClick={handlePointClick}
+              />
             </Col>
           </Row>
         </Container>

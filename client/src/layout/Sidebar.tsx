@@ -1,12 +1,23 @@
-import { useState, useEffect } from "react";
-import { fetchHistoricalData } from "../utils/fetchData";
+// import { useState, useEffect } from "react";
+import { Row, Col } from "react-bootstrap";
+import TimeOptions from "./TimeOptions";
+
+import { DataPoint } from "../components/LineChart";
+import "../assets/css/css-layout/Sidebar.css";
 
 interface SidebarProps {
-  ticker: string;
-  from: string;
-  to: string;
+  onDatesChange: (from: string, to: string) => void;
+  onPointClick: (dataPoint: DataPoint) => void;
 }
 
-const Sidebar = ({ ticker, from, to }: SidebarProps) => {
-
+const Sidebar = ({ onDatesChange, onPointClick }: SidebarProps) => {
+  return (
+    <Row>
+      <Col>
+        <TimeOptions onDatesChange={onDatesChange} />
+      </Col>
+    </Row>
+  );
 }
+
+export default Sidebar;

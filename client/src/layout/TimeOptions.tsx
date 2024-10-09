@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 
