@@ -120,7 +120,7 @@ const LineChart = ({ ticker, from, to }: LineChartProps) => {
   }, [ticker, from, to]);
 
   return (
-    <div id="chart-container">
+    <div className="chart-container">
       <h2>{ticker} Stock Price History</h2>
       {loading ? (
         <p>Loading...</p>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Button, Col, Row } from "react-bootstrap";
 
-import "../assets/css/css-components/SearchBar.css";
+import "../assets/css/css-layout/SearchBar.css";
 
 interface SearchBarProps {
   onSearch: (ticker: string) => void;
