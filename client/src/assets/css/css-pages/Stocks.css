@@ -1,3 +1,7 @@
+main {
+  overflow-x: hidden;
+}
+
 .chart-message {
   padding-top: 200px;
   text-align: center;

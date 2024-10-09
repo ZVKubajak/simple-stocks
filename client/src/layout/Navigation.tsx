@@ -6,7 +6,7 @@ import "../assets/css/css-layout/Navigation.css";
 
 const Navigation = () => {
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar bg="dark" data-bs-theme="dark" id="navbar">
       <Container>
         <Navbar.Brand href="#home">Simple Stocks</Navbar.Brand>
         <Nav className="me-auto">

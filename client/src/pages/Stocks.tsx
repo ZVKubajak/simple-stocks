@@ -28,7 +28,7 @@ const Stocks = () => {
       <Navigation />
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
-        <Container fluid>
+        <Container fluid className="mt-4">
           <Row>
             <Col md={8}>
               <LineChart ticker={ticker} from={from} to={to} />
