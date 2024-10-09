@@ -13,6 +13,7 @@ const Stocks = () => {
   const [selectedDataPoint, setSelectedDataPoint] = useState<DataPoint | null>(
     null
   );
+  const [showStats, setShowStats] = useState(false);
   const [ticker, setTicker] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -33,6 +34,10 @@ const Stocks = () => {
     setSelectedDataPoint(dataPoint);
   };
 
+  const toggleStats = () => {
+    setShowStats((prev) => !prev);
+  };
+
   return (
     <main>
       <Navigation />
@@ -46,6 +51,7 @@ const Stocks = () => {
                 ticker={ticker}
                 from={from}
                 to={to}
+                showPoints={showStats}
                 onPointClick={handlePointClick}
               />
             </Col>
@@ -53,6 +59,8 @@ const Stocks = () => {
             <Col md={4}>
               <Sidebar
                 onDatesChange={handleDates}
+                toggleStats={toggleStats}
+                showStats={showStats}
                 selectedDataPoint={selectedDataPoint}
               />
             </Col>

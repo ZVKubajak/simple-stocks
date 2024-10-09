@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import TimeOptions from "./TimeOptions";
 import Form from "react-bootstrap/Form";
@@ -8,16 +7,17 @@ import "../assets/css/css-layout/Sidebar.css";
 
 interface SidebarProps {
   onDatesChange: (from: string, to: string) => void;
+  toggleStats: () => void;
+  showStats: boolean;
   selectedDataPoint: DataPoint | null;
 }
 
-const Sidebar = ({ onDatesChange, selectedDataPoint }: SidebarProps) => {
-  const [showStats, setShowStats] = useState(false);
-
-  const toggleStats = () => {
-    setShowStats(!showStats);
-  };
-
+const Sidebar = ({
+  onDatesChange,
+  toggleStats,
+  showStats,
+  selectedDataPoint,
+}: SidebarProps) => {
   return (
     <Row id="sidebar-container">
       <Col className="mt-3">

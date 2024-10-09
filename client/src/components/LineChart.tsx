@@ -48,10 +48,17 @@ interface LineChartProps {
   ticker: string;
   from: string;
   to: string;
+  showPoints: boolean;
   onPointClick: (dataPoint: DataPoint) => void;
 }
 
-const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
+const LineChart = ({
+  ticker,
+  from,
+  to,
+  showPoints,
+  onPointClick,
+}: LineChartProps) => {
   const [stockResults, setStockResults] = useState<any[]>([]);
   const [chartData, setChartData] = useState<LineChartData>({
     labels: [],
@@ -168,7 +175,11 @@ const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <Line ref={chartRef} data={chartData} options={chartOptions} />
+        <Line
+          ref={chartRef}
+          data={chartData}
+          options={chartOptions(showPoints)}
+        />
       )}
     </div>
   );
