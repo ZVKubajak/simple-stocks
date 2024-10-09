@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fetchHistoricalData } from "../utils/fetchData";
 
 import "../assets/css/css-components/Charts.css";
@@ -58,6 +58,8 @@ const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
   const multiplier = 1;
   const timespan = "day";
 
+  const chartRef = useRef<any>(null);
+
   useEffect(() => {
     if (from && to) {
       const loadData = async () => {
@@ -81,7 +83,9 @@ const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
             datasets: [
               {
                 label: `${ticker} Stock Price`,
-                data: data.stockResults.map((result: any) => result.closedPrice),
+                data: data.stockResults.map(
+                  (result: any) => result.closedPrice
+                ),
                 borderColor: "rgba(0, 255, 150, 1)",
                 tension: 0.1,
               },
@@ -102,31 +106,51 @@ const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
   }, [ticker, from, to]);
 
   const handlePointClick = (event: React.MouseEvent) => {
-    const chart = event.currentTarget as HTMLCanvasElement;
-    const chartInstance = (chart as any).chart.chartInstance;
+    const chartInstance = chartRef.current;
 
-    const points = chartInstance.getElementsAtEventForMode(event.nativeEvent, "nearest", { intersect: true }, true);
+    if (!chartInstance) {
+      console.error("Chart instance is not available.");
+      return;
+    }
 
-    if (points.length) {
+    const points = chartInstance.getElementsAtEventForMode(
+      event.nativeEvent,
+      "nearest",
+      { intersect: true },
+      true
+    );
+
+    if (points.length > 0) {
       const firstPoint = points[0];
       const i = firstPoint.index;
 
-      const clickedData = stockResults[i]
+      if (i >= 0 && 1 < stockResults.length) {
+        const clickedData = stockResults[i];
 
-      const dataPoint = {
-        volume: clickedData.volume,
-        avgPrice: clickedData.avgPrice,
-        openPrice: clickedData.openPrice,
-        closedPrice: clickedData.closedPrice,
-        highPrice: clickedData.highPrice,
-        lowPrice: clickedData.lowPrice,
-        timeStamp: clickedData.timeStamp,
-        tradeCount: clickedData.tradeCount,
-      };
+        if (clickedData) {
+          const dataPoint = {
+            volume: clickedData.volume,
+            avgPrice: clickedData.avgPrice,
+            openPrice: clickedData.openPrice,
+            closedPrice: clickedData.closedPrice,
+            highPrice: clickedData.highPrice,
+            lowPrice: clickedData.lowPrice,
+            timeStamp: clickedData.timeStamp,
+            tradeCount: clickedData.tradeCount,
+          };
 
-      onPointClick(dataPoint);
+          onPointClick(dataPoint);
+          console.log(dataPoint);
+        } else {
+          console.error("Clicked data is undefined:", clickedData);
+        }
+      } else {
+        console.error("Index is out of bounds:", i);
+      }
+    } else {
+      console.error("No points found at the clicked position.");
     }
-  }
+  };
 
   return (
     <div className="chart-container" onClick={handlePointClick}>
@@ -134,7 +158,7 @@ const LineChart = ({ ticker, from, to, onPointClick }: LineChartProps) => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <Line data={chartData} options={chartOptions} />
+        <Line ref={chartRef} data={chartData} options={chartOptions} />
       )}
     </div>
   );
