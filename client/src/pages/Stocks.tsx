@@ -10,17 +10,19 @@ import { DataPoint } from "../components/LineChart";
 import "../assets/css/css-pages/Stocks.css";
 
 const Stocks = () => {
+  const [selectedDataPoint, setSelectedDataPoint] = useState<DataPoint | null>(null);
   const [ticker, setTicker] = useState("");
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
 
   const handleSearch = (ticker: string) => {
+    console.log("Ticker:", ticker);
     setTicker(ticker.toUpperCase());
-    console.log(ticker);
   };
 
   const handlePointClick = (dataPoint: DataPoint) => {
     console.log("Point clicked:", dataPoint);
+    setSelectedDataPoint(dataPoint);
   };
 
   const handleDates = (from: string, to: string) => {
