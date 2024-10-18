@@ -23,20 +23,26 @@ const Sidebar = ({
             checked={showStats}
           />
         </Form>
-        {showStats && selectedDataPoint && (
-          <section>
-            <p>
-              Time: {new Date(selectedDataPoint.timeStamp).toLocaleString()}
-            </p>
-            <p>Volume: {selectedDataPoint.volume}</p>
-            <p>Average Price: ${selectedDataPoint.avgPrice}</p>
-            <p>Open Price: ${selectedDataPoint.openPrice}</p>
-            <p>Closed Price: ${selectedDataPoint.closedPrice}</p>
-            <p>Highest Price: ${selectedDataPoint.highPrice}</p>
-            <p>Lowest Price: ${selectedDataPoint.lowPrice}</p>
-            <p>Trade Count: {selectedDataPoint.tradeCount}</p>
-          </section>
-        )}
+        <section id="advanced-stats" className={showStats ? "show" : ""}>
+          {showStats ? (
+            selectedDataPoint ? (
+              <div>
+                <p>
+                  Time: {new Date(selectedDataPoint.timeStamp).toLocaleString()}
+                </p>
+                <p>Volume: {selectedDataPoint.volume}</p>
+                <p>Average Price: ${selectedDataPoint.avgPrice}</p>
+                <p>Open Price: ${selectedDataPoint.openPrice}</p>
+                <p>Closed Price: ${selectedDataPoint.closedPrice}</p>
+                <p>Highest Price: ${selectedDataPoint.highPrice}</p>
+                <p>Lowest Price: ${selectedDataPoint.lowPrice}</p>
+                <p>Trade Count: {selectedDataPoint.tradeCount}</p>
+              </div>
+            ) : (
+              <p>Select a data point.</p>
+            )
+          ) : null}
+        </section>
       </Col>
     </Row>
   );
