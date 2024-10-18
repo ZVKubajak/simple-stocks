@@ -1,4 +1,4 @@
-// * LineChart.tsx Types * //
+// * LineChart.tsx Interfaces * //
 
 export interface LineChartData {
   labels: string[];
@@ -28,4 +28,21 @@ export interface DataPoint {
   lowPrice: number;
   timeStamp: string;
   tradeCount: number;
+}
+
+// * Layout Prop Interfaces * //
+
+export interface SearchBarProps {
+  onSearch: (ticker: string) => void;
+}
+
+export interface SidebarProps {
+  onDatesChange: (from: string, to: string) => void;
+  toggleStats: () => void;
+  showStats: boolean;
+  selectedDataPoint: DataPoint | null;
+}
+
+export interface TimeOptionsProps {
+  onDatesChange: (from: string, to: string) => void;
 }

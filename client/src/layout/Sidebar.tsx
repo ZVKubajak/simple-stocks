@@ -2,15 +2,8 @@ import { Row, Col } from "react-bootstrap";
 import TimeOptions from "./TimeOptions";
 import Form from "react-bootstrap/Form";
 
-import { DataPoint } from "../utils/types/clientTypes";
+import { SidebarProps } from "../utils/types/clientTypes";
 import "../assets/css/css-layout/Sidebar.css";
-
-interface SidebarProps {
-  onDatesChange: (from: string, to: string) => void;
-  toggleStats: () => void;
-  showStats: boolean;
-  selectedDataPoint: DataPoint | null;
-}
 
 const Sidebar = ({
   onDatesChange,
