@@ -1,3 +1,4 @@
+import { ListGroup } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import TimeOptions from "./TimeOptions";
 import Form from "react-bootstrap/Form";
@@ -26,18 +27,32 @@ const Sidebar = ({
         <section id="advanced-stats" className={showStats ? "show" : ""}>
           {showStats ? (
             selectedDataPoint ? (
-              <div>
-                <p>
+              <ListGroup id="list-group">
+                <ListGroup.Item action>
                   Time: {new Date(selectedDataPoint.timeStamp).toLocaleString()}
-                </p>
-                <p>Volume: {selectedDataPoint.volume}</p>
-                <p>Average Price: ${selectedDataPoint.avgPrice}</p>
-                <p>Open Price: ${selectedDataPoint.openPrice}</p>
-                <p>Closed Price: ${selectedDataPoint.closedPrice}</p>
-                <p>Highest Price: ${selectedDataPoint.highPrice}</p>
-                <p>Lowest Price: ${selectedDataPoint.lowPrice}</p>
-                <p>Trade Count: {selectedDataPoint.tradeCount}</p>
-              </div>
+                </ListGroup.Item>
+                <ListGroup.Item action>
+                  Volume: {selectedDataPoint.volume} Shares
+                </ListGroup.Item>
+                <ListGroup.Item action>
+                  Average Price: ${selectedDataPoint.avgPrice}
+                </ListGroup.Item>
+                <ListGroup.Item action>
+                  Open Price: ${selectedDataPoint.openPrice}
+                </ListGroup.Item>
+                <ListGroup.Item action>
+                  Closed Price: ${selectedDataPoint.closedPrice}
+                </ListGroup.Item>
+                <ListGroup.Item action>
+                  Highest Price: ${selectedDataPoint.highPrice}
+                </ListGroup.Item>
+                <ListGroup.Item action>
+                  Lowest Price: ${selectedDataPoint.lowPrice}
+                </ListGroup.Item>
+                <ListGroup.Item action>
+                  Trade Count: {selectedDataPoint.tradeCount} Trades
+                </ListGroup.Item>
+              </ListGroup>
             ) : (
               <p id="stat-message">Select a data point.</p>
             )
