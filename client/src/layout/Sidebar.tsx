@@ -2,7 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import TimeOptions from "./TimeOptions";
 import Form from "react-bootstrap/Form";
 
-import { DataPoint } from "../components/LineChart";
+import { DataPoint } from "../utils/types/clientTypes";
 import "../assets/css/css-layout/Sidebar.css";
 
 interface SidebarProps {

@@ -6,7 +6,7 @@ import SearchBar from "../layout/SearchBar";
 import LineChart from "../components/LineChart";
 import Sidebar from "../layout/Sidebar";
 
-import { DataPoint } from "../components/LineChart";
+import { DataPoint } from "../utils/types/clientTypes";
 import "../assets/css/css-pages/Stocks.css";
 
 const Stocks = () => {

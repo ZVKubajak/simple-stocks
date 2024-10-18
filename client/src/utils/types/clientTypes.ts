@@ -10,6 +10,15 @@ export interface LineChartData {
   }[];
 }
 
+export interface LineChartProps {
+  ticker: string;
+  from: string;
+  to: string;
+  showPoints: boolean;
+  onPointClick: (dataPoint: DataPoint) => void;
+}
+
+// ! DataPoint is not used in LineChart.tsx, but can be found in Sidebar.tsx and Stocks.tsx.
 export interface DataPoint {
   volume: number;
   avgPrice: number;
@@ -19,12 +28,4 @@ export interface DataPoint {
   lowPrice: number;
   timeStamp: string;
   tradeCount: number;
-}
-
-export interface LineChartProps {
-  ticker: string;
-  from: string;
-  to: string;
-  showPoints: boolean;
-  onPointClick: (dataPoint: DataPoint) => void;
 }
