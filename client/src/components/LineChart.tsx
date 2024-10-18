@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
+import { LineChartData, LineChartProps } from "../utils/types/clientTypes";
 import { fetchHistoricalData } from "../utils/fetchData";
+import { chartOptions } from "../utils/chartOptions";
 
 import "../assets/css/css-components/Charts.css";
-
-import { chartOptions } from "../utils/chartOptions";
 
 import { Line } from "react-chartjs-2";
 import {
@@ -22,35 +22,6 @@ ChartJS.register(
   PointElement,
   LineController
 );
-
-interface LineChartData {
-  labels: string[];
-  datasets: {
-    label: string;
-    data: number[];
-    borderColor: string;
-    tension: number;
-  }[];
-}
-
-export interface DataPoint {
-  volume: number;
-  avgPrice: number;
-  openPrice: number;
-  closedPrice: number;
-  highPrice: number;
-  lowPrice: number;
-  timeStamp: string;
-  tradeCount: number;
-}
-
-interface LineChartProps {
-  ticker: string;
-  from: string;
-  to: string;
-  showPoints: boolean;
-  onPointClick: (dataPoint: DataPoint) => void;
-}
 
 const LineChart = ({
   ticker,

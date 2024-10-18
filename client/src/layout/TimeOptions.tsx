@@ -3,11 +3,8 @@ import { Row, Col } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 
+import { TimeOptionsProps } from "../utils/types/clientTypes";
 import "../assets/css/css-layout/TimeOptions.css";
-
-interface TimeOptionsProps {
-  onDatesChange: (from: string, to: string) => void;
-}
 
 const TimeOptions = ({ onDatesChange }: TimeOptionsProps) => {
   // console.log("TimeOptions.tsx rendered.");

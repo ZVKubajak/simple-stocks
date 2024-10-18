@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 
+import { SearchBarProps } from "../utils/types/clientTypes";
 import "../assets/css/css-layout/SearchBar.css";
-
-interface SearchBarProps {
-  onSearch: (ticker: string) => void;
-}
 
 const SearchBar = ({ onSearch }: SearchBarProps) => {
   const [input, setInput] = useState("");
