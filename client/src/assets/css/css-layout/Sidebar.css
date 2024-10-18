@@ -19,3 +19,10 @@
   font-size: 1.5rem; /* Larger font size for the label */
   margin-left: 15px; /* Increase space between the switch and the label */
 }
+
+#stat-message {
+  text-align: center;
+  padding: 100px 0 162px 0;
+  font-size: 28px;
+  color: darkgray;
+}

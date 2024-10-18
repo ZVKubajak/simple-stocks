@@ -39,7 +39,7 @@ const Sidebar = ({
                 <p>Trade Count: {selectedDataPoint.tradeCount}</p>
               </div>
             ) : (
-              <p>Select a data point.</p>
+              <p id="stat-message">Select a data point.</p>
             )
           ) : null}
         </section>

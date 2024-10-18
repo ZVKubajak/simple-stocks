@@ -67,7 +67,7 @@ const Stocks = () => {
           </Row>
         </Container>
       ) : (
-        <p className="chart-message">
+        <p className="ticker-message">
           Enter a ticker symbol to see its stock price history.
         </p>
       )}
