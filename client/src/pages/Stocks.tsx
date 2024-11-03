@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import Navigation from "../layout/Navigation";
 import SearchBar from "../layout/SearchBar";
 import LineChart from "../components/LineChart";
 import Sidebar from "../layout/Sidebar";
@@ -40,7 +39,6 @@ const Stocks = () => {
 
   return (
     <main>
-      <Navigation />
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
         <Container fluid className="mt-4">
