@@ -38,7 +38,7 @@ const Stocks = () => {
   };
 
   return (
-    <main>
+    <main id="explore">
       <SearchBar onSearch={handleSearch} />
       {ticker ? (
         <Container fluid className="mt-4">

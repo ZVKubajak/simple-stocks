@@ -1,0 +1,22 @@
+#home {
+  text-align: center;
+  padding-top: 120px;
+}
+
+.title {
+  font-size: 50px;
+  padding-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 32px;
+  padding-bottom: 40px;
+}
+
+.description {
+  width: 40%;
+  margin: auto;
+  line-height: 1.5;
+  font-size: 20px;
+  color: lightgray;
+}
