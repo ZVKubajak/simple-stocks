@@ -29,28 +29,28 @@ const Sidebar = ({
             selectedDataPoint ? (
               <ListGroup id="list-group">
                 <ListGroup.Item action>
-                  Time: {new Date(selectedDataPoint.timeStamp).toLocaleString()}
+                  Time: {new Date(selectedDataPoint.timeStamp).toLocaleDateString("en-US")}
                 </ListGroup.Item>
                 <ListGroup.Item action>
-                  Volume: {selectedDataPoint.volume} Shares
+                  Volume: {(selectedDataPoint.volume).toLocaleString()} Shares
                 </ListGroup.Item>
                 <ListGroup.Item action>
-                  Average Price: ${selectedDataPoint.avgPrice}
+                  Average Price: ${(selectedDataPoint.avgPrice).toFixed(2)}
                 </ListGroup.Item>
                 <ListGroup.Item action>
-                  Open Price: ${selectedDataPoint.openPrice}
+                  Open Price: ${(selectedDataPoint.openPrice).toFixed(2)}
                 </ListGroup.Item>
                 <ListGroup.Item action>
-                  Closed Price: ${selectedDataPoint.closedPrice}
+                  Closed Price: ${(selectedDataPoint.closedPrice).toFixed(2)}
                 </ListGroup.Item>
                 <ListGroup.Item action>
-                  Highest Price: ${selectedDataPoint.highPrice}
+                  Highest Price: ${(selectedDataPoint.highPrice).toFixed(2)}
                 </ListGroup.Item>
                 <ListGroup.Item action>
-                  Lowest Price: ${selectedDataPoint.lowPrice}
+                  Lowest Price: ${(selectedDataPoint.lowPrice).toFixed(2)}
                 </ListGroup.Item>
                 <ListGroup.Item action>
-                  Trade Count: {selectedDataPoint.tradeCount} Trades
+                  Trade Count: {(selectedDataPoint.tradeCount).toLocaleString()} Trades
                 </ListGroup.Item>
               </ListGroup>
             ) : (
