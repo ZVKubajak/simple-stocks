@@ -45,7 +45,7 @@ const Stocks = () => {
       {ticker ? (
         <Container fluid className="mt-4">
           <h1 id="ticker-title">{ticker} Stock History</h1>
-          <Row>
+          <Row id="chart-and-sidebar">
             <Col md={8}>
               <LineChart
                 ticker={ticker}
@@ -67,7 +67,7 @@ const Stocks = () => {
           </Row>
         </Container>
       ) : (
-        <p className="chart-message">
+        <p className="ticker-message">
           Enter a ticker symbol to see its stock price history.
         </p>
       )}
