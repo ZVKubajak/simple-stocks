@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import "../assets/css/css-pages/Home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -18,7 +19,9 @@ const Home = () => {
         <p>Get started now and make smart decisions!</p>
       </div>
 
-      <Button variant="success">Search For A Stock</Button>
+      <Link to="/stocks">
+        <Button variant="success">Search For A Stock</Button>
+      </Link>
     </main>
   );
 };
